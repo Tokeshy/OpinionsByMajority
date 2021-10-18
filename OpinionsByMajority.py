@@ -5,6 +5,9 @@ import statistics
 from textblob import TextBlob
 from typing import List
 
+from secrets import TweeterAPIKey
+from secrets import TweeterAPISecret
+
 '''
 it is better and more logical to write the import of API Key & API Secret
 from a file or hardcode, since copying and pasting is not very convenient, 
@@ -14,11 +17,6 @@ I will leave it in this form
 no comments, because the function names clearly indicate their purpose
 so don't blame ))
 '''
-
-print('Enter your API Key')
-TweeterAPIKey = input()
-print('Enter your API Secret')
-TweeterAPISecret = input()
 
 auth = tweepy.AppAuthHandler(TweeterAPIKey, TweeterAPISecret)
 api = tweepy.API(auth)
@@ -31,7 +29,7 @@ def GetTweets(Keyword: str) -> List:
     return tweets
 
 
-def CleanTweets(tweets: list) -> List: 
+def CleanTweets(tweets: list) -> List:
     TweetsCleaned = []
     for tweet in tweets:
         TweetsCleaned.append(preprocessor.clean(str(tweet)))
